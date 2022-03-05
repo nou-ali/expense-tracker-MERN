@@ -2,7 +2,7 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { Balance } from "./components/Balance";
 import { Incoming } from "./components/Incoming";
-import { Transactions } from "./components/Transactions";
+import { TransactionList } from "./components/TransactionList";
 import { AddTransaction } from "./components/AddTransaction";
 
 import {GlobalProvider} from "./context/GlobalState";
@@ -15,7 +15,7 @@ function App() {
       <div className="container">
         <Balance />
         <Incoming />
-        <Transactions />
+        <TransactionList />
         <AddTransaction />
       </div>
     </GlobalProvider>

@@ -13,19 +13,31 @@ const initialState = {
   ],
 };
 
-
 //Create context
 
 export const GlobalContext = createContext(initialState);
 
 //Provider component
 
-export const GlobalProvider = ({children}) => {
-    const [state, dispatch]= useReducer(AppReducer, initialState); // need access to state and dispatch when calling a reducer action
+export const GlobalProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(AppReducer, initialState); // need access to state and dispatch when calling a reducer action
 
-    return (<GlobalContext.Provider value={{
-      transactions: state.transactions
-    }}>
+  //actions that will make calls to our reducer
+  function deleteTransaction(id) {
+    dispatch({
+      type: "DELETE_TRANSACTION",
+      payload: id,
+    });
+  }
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        transactions: state.transactions,
+        deleteTransaction
+      }}
+    >
       {children}
-    </GlobalContext.Provider>)
-}
+    </GlobalContext.Provider>
+  );
+};

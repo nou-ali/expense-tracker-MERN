@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import AppReducer from "./AppReducer";
 
 //We need an initial state
 
@@ -22,7 +23,9 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({children}) => {
     const [state, dispatch]= useReducer(AppReducer, initialState); // need access to state and dispatch when calling a reducer action
 
-    return (<GlobalContext.Provider>
+    return (<GlobalContext.Provider value={{
+      transactions: state.transactions
+    }}>
       {children}
     </GlobalContext.Provider>)
 }

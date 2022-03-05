@@ -6,10 +6,13 @@
 
 * {
   box-sizing: border-box;
+  color:#F13C20
 }
 
+
+
 body {
-  background-color: #f7f7f7;
+  background-color: #EFE2BA;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,7 +92,7 @@ input[type='number'] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #4056A1;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -98,6 +101,7 @@ input[type='number'] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+  border-radius: 2px;
 }
 
 .btn:focus,
@@ -132,7 +136,7 @@ input[type='number'] {
 
 .delete-btn {
   cursor: pointer;
-  background-color: #e74c3c;
+  background-color: #F13C20;
   border: 0;
   color: #fff;
   font-size: 20px;
@@ -149,3 +153,8 @@ input[type='number'] {
 .list li:hover .delete-btn {
   opacity: 1;
 }
+
+.form-parent {
+  color:black;
+}
+

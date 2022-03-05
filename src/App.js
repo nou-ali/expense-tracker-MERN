@@ -2,7 +2,7 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { Balance } from "./components/Balance";
 import { Incoming } from "./components/Incoming";
-
+import { Transactions } from "./components/Transactions";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <div className="container">
         <Balance />
         <Incoming />
+        <Transactions />
       </div>
     </div>
   );

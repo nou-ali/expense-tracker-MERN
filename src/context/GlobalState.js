@@ -5,12 +5,7 @@ import AppReducer from "./AppReducer";
 
 //any glboal state will go in the object below
 const initialState = {
-  transactions: [
-    { id: 1, text: "Headphones", amount: -25 },
-    { id: 2, text: "Salary", amount: 500 },
-    { id: 3, text: "DVD", amount: -10 },
-    { id: 4, text: "Film Camera", amount: 300 },
-  ],
+  transactions: [],
 };
 
 //Create context

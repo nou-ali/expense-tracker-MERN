@@ -6,8 +6,9 @@
 
 * {
   box-sizing: border-box;
-  color:#F13C20
+  color:#F13C20;
 }
+
 
 
 
@@ -22,10 +23,14 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-.container {
+.container{
+  border: 3px solid #4056A1;
+  border-radius: 5px;
+  padding: 20px;
   margin: 30px auto;
   width: 350px;
 }
+
 
 h1 {
   letter-spacing: 1px;
@@ -50,6 +55,7 @@ h4 {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  border-radius: 5px;
 }
 
 .inc-exp-container > div {
@@ -154,7 +160,20 @@ input[type='number'] {
   opacity: 1;
 }
 
-.form-parent {
+.form-text1,.form-text2 {
   color:black;
 }
 
+
+input[type="text"]{
+  border-radius: 5px;
+}
+
+input[type="number"]{
+  border-radius: 5px;
+  margin-bottom: 10%;
+}
+
+.display-1 {
+  margin-bottom: 10%;
+}

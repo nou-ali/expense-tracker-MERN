@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {getTransactions} = require('../controllers/transaction-control')
+const {getTransactions, addTransaction, deleteTransaction} = require('../controllers/transaction-control')
 
 router
 .route("/")
-.get(getTransactions);
+.get(getTransactions)
+.post(addTransaction);
+
+router
+  .route("/:id")
+  .delete(deleteTransaction);
 
 module.exports = router;

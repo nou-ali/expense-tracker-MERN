@@ -8,7 +8,7 @@ import axios from "axios";
 const initialState = {
   transactions: [],
   error: null,
-  loading: true
+  loading: true,
 };
 
 //Create context
@@ -21,38 +21,59 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState); // need access to state and dispatch when calling a reducer action
 
   //actions that will make calls to our reducer
- 
+
   async function getTransactions() {
-      try {
-        const res = await axios.get("/api/v1/transactions");
+    try {
+      const res = await axios.get("/api/v1/transactions");
 
-        dispatch({
-          type: "GET_TRANSACTIONS",
-          payload: res.data.data
-        });
-      } catch (error) {
-        dispatch({
-          type: "TRANSACTION_ERROR",
-          payload: error.response.data.error
-        });
-      }
+      dispatch({
+        type: "GET_TRANSACTIONS",
+        payload: res.data.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: error.response.data.error,
+      });
+    }
   }
 
-
-  function deleteTransaction(id) {
-    dispatch({
-      type: "DELETE_TRANSACTION",
-      payload: id,
-    });
+  async function deleteTransaction(id) {
+    try {
+      await axios.delete(`/api/v1/transactions/${id}`);
+      dispatch({
+        type: "DELETE_TRANSACTION",
+        payload: id,
+      });
+    } catch (error) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: error.response.data.error,
+      });
+    }
   }
 
-  function addTransaction(transaction) {
-    dispatch({
-      type: "ADD_TRANSACTION",
-      payload: transaction,
-    });
-  }
+  async function addTransaction(transaction) {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
+    try {
+      const res = await axios.post("/api/v1/transactions", transaction, config);
+
+      dispatch({
+        type: "ADD_TRANSACTION",
+        payload: res.data.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: error.response.data.error,
+      });
+    }
+  }
 
   return (
     <GlobalContext.Provider
@@ -62,7 +83,7 @@ export const GlobalProvider = ({ children }) => {
         loading: state.loading,
         getTransactions,
         deleteTransaction,
-        addTransaction
+        addTransaction,
       }}
     >
       {children}

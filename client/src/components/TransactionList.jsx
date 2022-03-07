@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Transaction } from "./Transaction";
 
 import { GlobalContext } from "../context/GlobalState";
 
 export const TransactionList = () => {
-  const { transactions } = useContext(GlobalContext); //instead of context.traction, will use destructuring
+  const { transactions, getTransactions } = useContext(GlobalContext); //instead of context.traction, will use destructuring
+
+  useEffect(() => {
+    getTransactions();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
